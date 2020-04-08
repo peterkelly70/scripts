@@ -5,7 +5,7 @@
 branch=$(git rev-parse --abbrev-ref HEAD);
 if [ $branch == "PROD" ]; then
    echo "You are on PROD branch, no commits allowed";
-elif [  "$branch" != ^W.*  ]; then
+elif [[  "$branch" != WR*  ]]; then
    echo "Branch name '$branch' is incorrect format."
    echo "Needs format:WRNNNN-Some-Text";
 else
