@@ -9,9 +9,9 @@ else
   message=$(echo "$branch"|cut -d- -f2-);
   wr=$(echo "WR33435-This-is-it"|cut -d- -f1);
   wr=$(echo "[#$wr]")
-  #echo "git commit -m \"$wr $message\"";
-  if  git commit -m "$wr $message" 
-  then
-     git push -u origin $branch;
-  fi
+  echo git commit -m \""$wr $message"\";
+  #if  git commit -m \" "$wr $message" \" 
+  #then
+     echo git push -u origin $branch;
+  #fi
 fi
