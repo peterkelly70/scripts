@@ -25,9 +25,9 @@ done
                          
 branch=$(git rev-parse --abbrev-ref HEAD);
 githubkey="7a6c5dbf7f8c0f893a6513d8adfe816b689250d2"
-username="peterkelly70"
+username="peterkelly70%40github.com"
 url=$(git config --get remote.origin.url |cut -f3- -d/ );
-url=$(echo "https://${username}@${githubkey}/${url}");
+url=$(echo "https://${username}%40${githubkey}/${url}");
 https://username:password@
 if [ $branch == "PROD" ]; then
    echo "You are on PROD branch, no commits allowed";
@@ -53,3 +53,4 @@ else
   fi
 fi
 exit 0
+
