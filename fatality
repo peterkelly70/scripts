@@ -43,6 +43,7 @@ else
   then
    echo git commit -m "$wr $message";
    echo git push -u ${url} ${branch}; 
+   echo git status
   else 
     #echo process loop
     if  git commit -m "$wr $message" 
