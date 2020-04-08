@@ -3,17 +3,23 @@
 # It strips the WR number out and puts the new wr+message as commit message
 # if no errors, it then pushes the current  branch up to origin
 usage() {                                      # Function: Print a help message.
-  echo "Usage: $0 [ -d  ] " 1>&2 
+  echo "Usage: $0 [ -n ] [ -h ]" 1>&2 
+  echo "-n: demo, do not process" 1>&2
+  echo "-h: help, you're reading it" 1>&2
 }
 exit_abnormal() {                              # Function: Exit with error.
   usage
   exit 1
 }
-while getopts ":d:" options; do              
+while getopts ":nh" options; do              
   case "${options}" in                         
-    d)                                         
-      demo=1                                   
+    n )                                         
+      demo="yes"                                   
       ;;
+    h ) 
+     usage
+     exit 0
+     ;;
   esac
 done
                          
@@ -28,16 +34,16 @@ else
   wr=$(echo "WR33435-This-is-it"|cut -d- -f1);
   wr=$(echo "[#$wr]")
   #echo "git commit -m \"$wr $message\"";
-  if demo;
+  if [ "$demo" == "yes" ];
   then
    echo git commit -m "$wr $message";
    echo git push -u origin $branch; 
   else 
-    echo process loop
-    #if  git commit -m "$wr $message" 
-    #then
-      #git push -u origin $branch;
-    #fi
+    #echo process loop
+    if  git commit -m "$wr $message" 
+    then
+      git push -u origin $branch;
+    fi
   fi
 fi
 exit 0
