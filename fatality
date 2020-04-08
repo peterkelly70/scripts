@@ -24,6 +24,11 @@ while getopts ":nh" options; do
 done
                          
 branch=$(git rev-parse --abbrev-ref HEAD);
+githubkey="7a6c5dbf7f8c0f893a6513d8adfe816b689250d2"
+username="peterkelly70"
+url=$(git config --get remote.origin.url |cut -f3- -d/ );
+url=$(echo "https://${username}@${githubkey}/${url}");
+https://username:password@
 if [ $branch == "PROD" ]; then
    echo "You are on PROD branch, no commits allowed";
 elif [[  "$branch" != WR*  ]]; then
@@ -37,13 +42,13 @@ else
   if [ "$demo" == "yes" ];
   then
    echo git commit -m "$wr $message";
-   echo git push -u origin $branch; 
+   echo git push -u ${url} ${branch}; 
   else 
     #echo process loop
     if  git commit -m "$wr $message" 
     then
       echo "Your Git  Token is: 7a6c5dbf7f8c0f893a6513d8adfe816b689250d2 "
-      git push -u origin $branch;
+      git push -u ${url} ${branch};
     fi
   fi
 fi
