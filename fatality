@@ -2,6 +2,21 @@
 # This script takes the branch name in the format WRNNNNN-Other-text
 # It strips the WR number out and puts the new wr+message as commit message
 # if no errors, it then pushes the current  branch up to origin
+usage() {                                      # Function: Print a help message.
+  echo "Usage: $0 [ -d  ] " 1>&2 
+}
+exit_abnormal() {                              # Function: Exit with error.
+  usage
+  exit 1
+}
+while getopts ":d:" options; do              
+  case "${options}" in                         
+    d)                                         
+      demo=1                                   
+      ;;
+  esac
+done
+                         
 branch=$(git rev-parse --abbrev-ref HEAD);
 if [ $branch == "PROD" ]; then
    echo "You are on PROD branch, no commits allowed";
@@ -13,8 +28,16 @@ else
   wr=$(echo "WR33435-This-is-it"|cut -d- -f1);
   wr=$(echo "[#$wr]")
   #echo "git commit -m \"$wr $message\"";
-  if  git commit -m "$wr $message" 
+  if demo;
   then
-     git push -u origin $branch;
+   echo git commit -m "$wr $message";
+   echo git push -u origin $branch; 
+  else 
+    echo process loop
+    #if  git commit -m "$wr $message" 
+    #then
+      #git push -u origin $branch;
+    #fi
   fi
 fi
+exit 0
