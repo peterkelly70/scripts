@@ -36,7 +36,7 @@ elif [[  "$branch" != WR*  ]]; then
    echo "Needs format:WRNNNN-Some-Text";
 else
   message=$(echo "$branch"|cut -d- -f2-);
-  wr=$(echo "WR33435-This-is-it"|cut -d- -f1);
+  wr=$(echo "$branch"|cut -d- -f1);
   wr=$(echo "[#$wr]")
   #echo "git commit -m \"$wr $message\"";
   if [ "$demo" == "yes" ];
@@ -47,7 +47,6 @@ else
     #echo process loop
     if  git commit -m "$wr $message" 
     then
-      echo "Your Git  Token is: 7a6c5dbf7f8c0f893a6513d8adfe816b689250d2 "
       git push -u ${url} ${branch};
     fi
   fi
