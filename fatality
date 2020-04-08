@@ -4,14 +4,17 @@
 # if no errors, it then pushes the current  branch up to origin
 branch=$(git rev-parse --abbrev-ref HEAD);
 if [ $branch == "PROD" ]; then
-    echo "You are on PROD branch, no commits allowed";
+   echo "You are on PROD branch, no commits allowed";
+elif [  "$branch" != ^W.*  ]; then
+   echo "Branch name '$branch' is incorrect format."
+   echo "Needs format:WRNNNN-Some-Text";
 else
   message=$(echo "$branch"|cut -d- -f2-);
   wr=$(echo "WR33435-This-is-it"|cut -d- -f1);
   wr=$(echo "[#$wr]")
   #echo "git commit -m \"$wr $message\"";
-  if  git commit -m "$wr $message" 
-  then
-     git push -u origin $branch;
-  fi
+  #if  git commit -m "$wr $message" 
+  #then
+     echo git push -u origin $branch;
+  #fi
 fi
