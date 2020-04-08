@@ -1,0 +1,1 @@
+git log --pretty=format:"%cn committed %h on %cd - %f" --author="Peter"
