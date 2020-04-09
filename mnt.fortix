@@ -1,0 +1,36 @@
+#!/bin/bash
+# This starts the Fortix  Virutal Machin
+# Mounts the VM remote directory local
+# Runs the local mailserver mailcathcer
+# Sets up ssh tunnel for xdebug
+# Connects to the server
+
+# start virtual machine
+VBoxManage startvm "Fortix" --type headless
+
+echo "Waiting for network"
+while ! ping -c1 fortix &>/dev/null; 
+do 
+   echo "Ping Fail - `date`"; 
+done ; 
+echo "Network to VM detected"
+echo "Waiting for boot to complete."
+sleep 10s
+echo "Fortix Ready - `date`" ; 
+
+# Starting mailcatcher mail server
+echo "Starting mailcatcher mail server"
+echo "Available on http://mail:8080"
+ssh fortix startmail
+
+# Mount virtual server to local Fizban
+echo "Mounting Machine to local drive ~/Fortix/"
+sshfs -o follow_symlinks Fortix:/home/peter/ ~/Fortix/
+
+# Set up ssh tunnel for phpstorm and xdebug 
+echo "Setting up ssh tunnel for phpstorm xdebug"
+ssh -R 9000:localhost:9000 fortix
+
+# Connect to the server
+echo "Connecting to Fortix"
+ssh fortix
