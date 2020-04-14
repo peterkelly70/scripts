@@ -36,7 +36,7 @@ fi
 sshfs -o follow_symlinks $VM:/home/peter/ ~/VMs/$VM
 
 # Set up ssh tunnel for phpstorm and xdebug 
-echo "Setting up ssh tunnel for phpstorm xdebug - Port $PORT"
+echo "Setting up ssh tunnel for xdebug - Port $PORT"
 ssh -R $PORT:localhost:$PORT $VM
 
 # Connect to the server
