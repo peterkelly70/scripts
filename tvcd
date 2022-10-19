@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# tvcd
+# tvcd cds to the last Season in a tv series directory, 
+# tvcd ShowName/ or tvcd .. (to return to TV root)
+
+dir="/media/Strontium/TV/" 
+cd $dir
+if [ "$1" = ".." ]
+then
+   cede="$dir"
+else
+   last=""
+   for i in $(ls $1)
+   do
+       last="$i"
+   done
+   cede="$dir$1$last/"
+fi
+#echo cd $cede
+cd $cede
+
+
+

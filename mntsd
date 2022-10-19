@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "You need to type the following:"
+echo "sudo su -l"
+echo "echo 1 > /sys/bus/pci/rescan"

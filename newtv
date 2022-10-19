@@ -1,0 +1,12 @@
+#!/bin/sh
+dir=$(echo ${1} | sed -e 's/ /./g'|tr "[:upper:]" "[:lower:]")
+echo "$1 -> $dir"
+#tvedir="/media/Cerium/TV_EXTRA/"
+tvedir="/media/Germium/TV_EXTRA/"
+tvdir="/media/Vandium/TV/"
+cd "$tvedir"
+mkdir -p "$dir/Season1/"
+chmod -R 777 "$tvedir$dir"
+ln -s  "$tvedir$dir"  "$tvdir$dir"
+sed "/addtv/a \      - ${1}" /home/peter/.flexget/config.yml > /home/peter/.flexget/config.new
+mv /home/peter/.flexget/config.new /home/peter/.flexget/config.yml

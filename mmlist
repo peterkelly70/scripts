@@ -1,0 +1,7 @@
+#!/bin/bash
+# make a text file for all files with4 digits/ years
+
+for f in $(ls | grep -P '(?<!\d)\d{4}(?!\d)'); 
+do 
+	echo "mv $f ~/Media/Movies/x/" >> mvlist; 
+done

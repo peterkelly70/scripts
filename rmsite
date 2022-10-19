@@ -1,0 +1,29 @@
+#!/bin/bash
+if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+    echo "Not running as root"
+    exit
+fi
+site=$1
+# Disable site
+echo "Disabling site ${site}"
+echo a2dissite ${site}.conf
+a2dissite ${site}.conf -q
+echo a2dissite ${site}.ssl.conf 
+a2dissite ${site}.ssl.conf -q
+systemctl reload apache2
+echo "Deleting site ${site}"
+# Delete wwwroot
+rm -rf /var/www/${site}
+# Remove vhost on 80
+echo "Removing vhost files"
+rm -rvf /etc/apache2/sites-available/${site}.conf
+rm -rvf /etc/apache2/sites-available/${site}.ssl.conf
+# delete log directory
+rm -rf /var/log/${site}
+# Delete certificate for site
+echo "Deleting Cert"
+rm -rvf /etc/apache2/ssl/${site}
+# remove from server.txt
+# sed -i '/pattern to match/d' ./infile
+sed -i "/${site}/d" ~/server.txt
+cat ~/server.txt

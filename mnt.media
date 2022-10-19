@@ -1,0 +1,7 @@
+sshfs -o follow_symlinks morganna:/home/peter/media/audio/ ~/media/audio
+sshfs -o follow_symlinks morganna:/home/peter/media/tv/ ~/media/tv
+sshfs -o follow_symlinks morganna:/home/peter/media/movies/ ~/media/movies
+sshfs -o follow_symlinks morganna:/home/peter/media/animated/ ~/media/animated
+sshfs -o follow_symlinks morganna:/home/peter/media/books/ ~/media/books
+sshfs -o follow_symlinks morganna:/home/peter/media/comics/ ~/media/comics
+#sshfs -o follow_symlinks morganna:/home/peter/media/audio/ ~/media/audio

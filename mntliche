@@ -1,0 +1,16 @@
+sshfs peter@192.168.0.13:/media/Beryllium/Audio/ /media/Uridium/Audio -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Vandium/Torrents /media/Uridium/Torrents -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Vandium/Animated /media/Uridium/Animated -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Vandium/Anime /media/Uridium/Anime -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Beryllium/Books /media/Uridium/Books -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Lithium/Comics /media/Uridium/Comics -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Fermium/Movies /media/Uridium/Movies -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Erbium/Games /media/Uridium/Games -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Lithium/Ringtones /media/Uridium/Ringtones -o follow_symlinks
+sshfs peter@192.168.0.13:/media/Vandium/TV /media/Uridium/TV -o follow_symlinks
+
+#sshfs peter@192.168.0.13:/media/Cerium/TV_EXTRA /media/Uridium/TV_EXTRA_1/
+#sshfs peter@192.168.0.13:/media/Lithium/TV_EXTRA /media/Uridium/TV_EXTRA_2/
+#sshfs peter@192.168.0.13:/media/Dubnium/TV_EXTRA /media/Uridium/TV_EXTRA_3/
+#sshfs peter@192.168.0.13:/media/Erbium/TV_EXTRA /media/Uridium/TV_EXTRA_4/
+#sshfs peter@192.168.0.13:/media/Fermium/TV_EXTRA /media/Uridium/TV_EXTRA_5/

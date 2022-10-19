@@ -1,0 +1,21 @@
+#!/bin/bash
+# This script automates connection to the curtin computing lab specified
+# Works best if you have uploaded an ssh key
+# Define some variables - note plain text passwords represent a security risk, use at you own disretion
+user='usually your student #'
+passwd='yourpassword'
+lab='lab218-a01.cs.curtin.edu.au'
+# Connect to the curtin vpn using openconnect
+sudo echo "$passwd"|sudo openconnect -u "$user" --passwd-on-stdin  -b https://sslvpn.curtin.edu.au/
+# Gets ths pid of the process openconnect is running on
+ocpid=$(echo $!)
+# This line connects to the lab computer via ssh, you will be prompted for a password 
+# if you have not uploaded a shh-key via ssh-copy-id
+#connect to lab via ssh 
+#ssh $user@$lab;
+# uses sshfs to mount remote filesystem as local directory
+sshfs -o follow_symlinks "$user"@"$lab":/home/"$user"/ ~/Curtin/
+# You can remove the echos if you want to run the commands in the script.
+# only useful to do if your using ssh rather than mounting file system.
+echo sudo killall -9 openconnect will close all instances of openconnect.
+echo sudo kill $ocpid should kill only this instance.

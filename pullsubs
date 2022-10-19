@@ -1,0 +1,3 @@
+#!/bin/sh
+for f in $(ls -p|grep '/'); do mv "$f"* .; done
+

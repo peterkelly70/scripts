@@ -1,0 +1,9 @@
+#!/bin/bash
+if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+    echo "Not running as root"
+    exit
+fi
+echo  mkdir -p /etc/apache2/ssl/${1}
+mkdir -p /etc/apache2/ssl/${1}
+echo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/${1}/${1}.key -out /etc/apache2/ssl/${1}/${1}.crt
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/${1}/${1}.key -out /etc/apache2/ssl/${1}/${1}.crt

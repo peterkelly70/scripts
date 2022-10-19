@@ -1,0 +1,33 @@
+#!/bin/sh
+
+#make lowercase
+ls|rename -f 'y/A-Z/a-z/'
+
+#get brackets
+ls|rename -f 's/\%28/\(/g'
+ls|rename -f 's/\%29/\)/g'
+
+#Remove [] brackets and contents
+ls|rename -f 's/\[[^][]*\]//g'
+
+# Remove () brackets and contents
+ls|rename -f 's/\(([^)]*)\)//g'
+
+# Remove {} brackets and contents
+ls|rename -f 's/\{[^][]*\}//g'
+
+#720p.web.dl.x264.aac
+noweb=$(ls | rename -f 's/\.web\.//g')
+no720=$(ls | rename -f 's/\.720p\.//g')
+nox264=$(ls | rename -f 's/\.x264\.//g')
+noaac=$(ls | rename -f 's/\.aac\.//g')
+nodl=$(ls | rename -f 's/\.dl\.//g')
+nospaces=$(ls | rename -f 's/ /\./g')
+nodashes=$(ls | rename -f 's/-/\./g')
+nounderscores=$(ls | rename -f 's/_/\./g')
+notoomanydots4=$(ls|rename -f 's/\.\.\.\./\./g')
+notoomanydots2=$(ls|rename -f 's/\.\.\./\./g')
+notoomanydots1=$(ls|rename -f 's/\.\./\./g')
+
+
+

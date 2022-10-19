@@ -1,0 +1,40 @@
+#!/bin/bash
+if [[ $(/usr/bin/id -u -r) -ne 0 ]]; then
+    echo "Must be run as root"
+    exit
+fi
+# mount usb drives
+mount --uuid 5f99e463-5e3b-487f-830e-30d69ffd41cf /media/thoth/Actinium
+mount --uuid b93be9a8-1e0d-4855-8ce4-de3af5c6f332 /media/thoth/Bromium
+mount --uuid 12163089-9eb0-4052-bff7-c350622e0224 /media/thoth/Cerium
+mount --uuid 3fc01058-0079-4951-ac58-c1ded2891dde /media/thoth/Dubnium
+mount --uuid 389cbb2b-1caf-4bce-bb87-0cfd62e2951b /media/thoth/Erbium
+mount --uuid f998ff99-99e7-4a36-b96f-8f4bee5325ef /media/thoth/Fermium
+mount --uuid c644f86e-fbfc-46e6-a506-2e352b0c5eeb /media/thoth/Germium
+mount --uuid d052da31-3749-42e5-9b49-aceb421b9d77 /media/thoth/Halfnium
+mount --uuid 47f54311-50b0-402d-919c-63d835ef7c35 /media/thoth/Iridium
+mount --uuid a73d6ad0-cca4-4ee0-aa86-8928727c54be /media/thoth/Jalpaite
+mount --uuid c284662b-71d5-4e5c-a2a1-b04dd94d328d /media/thoth/Kelvium
+mount --uuid 6adce441-b474-4b62-b672-a5cd7a5e6808 /media/thoth/Lithium
+mount --uuid decae791-a9f4-4053-916b-9f69268bda1d /media/thoth/Magnesium
+mount --uuid 29269ffa-b83c-4ddd-951d-f61bf1a486ea /media/thoth/Nihomium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Osmium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Potassium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Questium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Rhodium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Scandium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Thorium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Uranium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Vanadium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Whatium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Xenon
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Yttrium
+#mount --uuid C9804982-A420-4F82-B97D-370F5484BBBD /media/thoth/Zirconium
+
+
+
+# mount --uuid
+# Export usb mounts
+service nfs-kernel-server restart
+
+

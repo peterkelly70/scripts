@@ -1,0 +1,3 @@
+awk '/test_pattern/ {
+    match($0, /test_pattern/); print substr($0, RSTART - 10, RLENGTH + 20);
+}' file

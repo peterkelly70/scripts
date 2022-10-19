@@ -1,0 +1,20 @@
+#!/bin/bash
+# sort52
+for d in *
+do 
+if [ -d "$d" ]
+then
+   echo "$d" 
+   for nf in *
+   do
+     if [ ! -d "$nf" ]
+     then
+         if [[ $nf =~ $d ]]
+         then
+             mv -v "$nf"  "$d"/"$nf"
+         fi
+     fi
+   done
+fi
+done
+

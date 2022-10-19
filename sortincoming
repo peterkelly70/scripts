@@ -1,0 +1,22 @@
+#!/bin/bash
+# sortincoming
+income="/media/Beryllium/Comics/incoming/"
+for d in *
+do 
+if [ -d "$d" ]
+then
+   echo "$d" 
+   for nf in $(ls "$income")
+   do
+     echo "$nf"
+     if [ ! -d "$nf" ]
+     then
+         if [[ $nf =~ $d ]]
+         then
+             mv -v "$income/$nf"  "$d"/"$nf"
+         fi
+     fi
+   done
+fi
+done
+

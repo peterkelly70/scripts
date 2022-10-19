@@ -1,0 +1,25 @@
+#!/bin/sh
+database="moodle"
+environ="stg"
+while getopts "d:e:h" param; do
+    case "${param}" in
+
+    d)    database="$OPTARG";;  
+
+    e)    environ="$OPTARG";;
+         
+    h)   printf "Usage dumpdb: -d database  -e environment  \n"
+         printf "example: dumpdb -d \"swh_moodle\"  -e \"prod\" \n"
+	 exit 2;;
+    
+    ?)   printf "Usage dumpdb: -d database  -e environment \n" 
+         printf "example: dumpdb -d \"swh_moodle\"  -e \"prod\" \n"
+         exit 2;;
+    esac
+done
+shift $((OPTIND-1))
+
+echo "Dump ${database} -> ${database}_${environ}_$(date +'%d%m%y').sql"
+# echo 'DETgovSQLsit#555'
+# echo 'select * from mdl_config where name="release";'
+mysqldump -u root -p --routines ${database} > ${database}_${environ}_$(date +'%d%m%y').sql

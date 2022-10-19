@@ -1,0 +1,7 @@
+#!/bin/bash	
+pactl set-default-sink 'bluez_output.28_1A_E8_E9_D8_81.a2dp-sink'
+pactl set-sink-volume 'bluez_output.28_1A_E8_E9_D8_81.a2dp-sink' 85%
+pactl set-default-source 'bluez_output.28_1A_E8_E9_D8_81.a2dp-sink.monitor'
+pactl set-source-volume 'bluez_output.28_1A_E8_E9_D8_81.a2dp-sink.monitor' 75%
+
+notify-send "Audio set to BT"

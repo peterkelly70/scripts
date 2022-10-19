@@ -1,0 +1,6 @@
+OIFS="$IFS"
+IFS=$'\n'
+for f in $(ls|grep -i ".zip"); do unzip -o ${f}; done
+for f in $(ls|grep -i ".7z"); do 7z x -y ${f}; done
+for f in $(ls|grep -i ".rar"); do unrar x -y ${f}; done
+IFS="$OIFS"

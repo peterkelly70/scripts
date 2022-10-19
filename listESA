@@ -1,0 +1,3 @@
+#!/bin/bash
+cd ~/Tools/Scripts/
+for f in $(ls ESA*); do echo "${f}";cat ${f}|grep ssh; done

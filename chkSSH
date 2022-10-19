@@ -1,0 +1,10 @@
+# uname ='ccdmz\pkelly'
+pass='ZH^uNQ5M)#4bd3dt'
+uname="pkelly"
+#pass="weDONTsellsea\$shell947"
+# nupass="TheBatman!939!"
+for host in $(cat esa_servers.txt |grep -v '#'|grep -v -e '^$'|cut -f2 -d' ');
+do
+   echo "${host}: Checking ssh and sudo";
+   echo "${pass}" | ssh -o PasswordAuthentication=no -tt "${uname}@${host}" "sudo -S hostname";
+done

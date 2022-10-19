@@ -1,0 +1,38 @@
+#!/bin/bash
+# Clean cache
+# youtube-dl --rm-cache-dir
+artist=    #artist flag
+album=    #dir flag
+url=    #url flag
+while getopts "a:d:u:h" param; do
+    case "${param}" in
+    a)    artist="$OPTARG";;  
+
+    d)    album="$OPTARG"
+          dir="/home/peter/Torrents/mp3s/${album}/"
+          mkdir -p "$dir";;
+
+    u)    url="$OPTARG"
+          vid=$(echo "${url}"|cut -f2 -d=);;
+
+    h)    printf "No HELP! \n" 
+          exit 2;;
+    
+    ?)    printf "Usage %s: -d album  -u youtube_url [-a artist] case \n" 
+          exit 2;;
+    esac
+done
+shift $((OPTIND-1))
+
+printf "${album} ${artist} ${vid} ${url}\n"
+if [ ! -z "${artist}" ] && [ ! -z "${album}" ] && [ ! -z "${url}" ]; then
+    echo "youtube-dl -w -i -x -c --sleep-interval=0 --max-sleep-interval=3 -R infinite --embed-thumbnail -o \"${dir}%(playlist_index)s-${artist}-${album}-%(title)s.%(ext)s\" --audio-format mp3 ${url}\n"
+    youtube-dl -w -i -x -c --sleep-interval=0 --max-sleep-interval=3 -R infinite --embed-thumbnail -o "${dir}%(playlist_index)s-${artist}-${album}-%(title)s.%(ext)s" --audio-format mp3 ${url}
+elif [ ! -z "${album}" ] && [ ! -z "${url}" ]; then
+    echo "youtube-dl -w -i -x --sleep-interval=0 --max-sleep-interval=3 -R infinite --embed-thumbnail -o \"${dir}%(playlist_index)s-%(artists)s-${album}-%(title)s.%(ext)s\" --audio-format mp3 ${url}\n"
+    youtube-dl -w -i -x -c --sleep-interval=0 --max-sleep-interval=3 -R infinite --embed-thumbnail -o "${dir}%(playlist_index)s-%(artists)s-${album}-%(title)s.%(ext)s" --audio-format mp3 ${url}
+else
+    printf "Usage: %s: -d album  -u youtube_url [-a artist] \n"
+    exit 2
+fi
+

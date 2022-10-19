@@ -1,0 +1,7 @@
+#!/bin/bash
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+for f in $(ls|grep mp3); do 
+  eyeD3 --add-image="$1":FRONT_COVER  "$f"
+done
+IFS=SAVEIFS

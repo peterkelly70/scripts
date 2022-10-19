@@ -1,0 +1,8 @@
+#!/bin/bash	
+pactl set-default-sink 'alsa_output.usb-1532_Razer_Barracuda_X_R002000000-01.analog-stereo'
+pactl set-sink-volume 'alsa_output.usb-1532_Razer_Barracuda_X_R002000000-01.analog-stereo' 130%
+pactl set-default-source 'alsa_input.usb-1532_Razer_Barracuda_X_R002000000-01.mono-fallback'
+pactl set-source-volume 'alsa_input.usb-1532_Razer_Barracuda_X_R002000000-01.mono-fallback' 150%
+sleep 0.5
+pactl set-source-volume 'alsa_input.usb-1532_Razer_Barracuda_X_R002000000-01.mono-fallback' 150%
+notify-send "Audio set to Headphones"

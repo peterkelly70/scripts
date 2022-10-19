@@ -1,0 +1,4 @@
+#replace all spaces on lines with _
+cat ap_orders.txt | tr '\n' ' ' |xargs -d' ' -n5
+cat ap_payments.txt | tr '\n' ' ' |xargs -d' ' -n4
+

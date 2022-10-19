@@ -1,0 +1,2 @@
+#!/bin/sh
+replaygain --force *.mp3

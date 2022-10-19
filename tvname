@@ -1,0 +1,23 @@
+#!/bin/sh
+dir="$2" 
+cd "$dir"
+if [ "$1" = ".." ]
+then
+   cede="$dir"
+else
+   last=""
+   for i in $(ls "$1")
+   do
+       last="$i"
+   done
+   cede="$dir$1$last/"
+fi
+#echo cd $cede
+cd "$cede"
+echo "Processing $cede"
+tvren --unattended --pad=2 --nocache
+
+
+
+
+

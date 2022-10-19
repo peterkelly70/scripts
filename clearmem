@@ -1,0 +1,11 @@
+#!/bin/bash
+# Make sure its root
+#if [[ $(/usr/bin/id -u -r) -ne 0 ]]; then
+#    echo "Must be run as root"
+#    exit
+#fi
+
+# Do the mem clear
+sudo su -c "echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'" root
+# Let the user know
+notify-send "'Ram-cache and Swap Cleared'" -t 10000

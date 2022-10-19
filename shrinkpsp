@@ -1,0 +1,8 @@
+for f in $(ls|grep iso); 
+do 
+	ext="${f##*.}"; 
+	fn="${f%.*}"; 
+	echo ${fn}.${ext}; 
+	echo ciso 5 ${f} ${fn}.cso
+	ciso 5 ${f} ${fn}.cso
+done

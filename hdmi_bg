@@ -1,0 +1,39 @@
+#!/bin/bash
+# Initialize variables, read for dotfile if exists
+gvalue=0
+bvalue=0
+cb=$(xrandr --verbose |grep Brightness |cut -f2 -d:|tr -d [:space:])
+cb=$(echo ${cb}*100 |bc)
+cg=$(xrandr --verbose |grep Gamma |cut -f2 -d:|tr -d [:space:])
+cg=$(echo ${cg}*100 |bc)
+echo "Current Brightness: $cb"
+echo "Current Gamma $cg:$cg:$cg"
+while [ "$1" != "" ]; do
+    case $1 in
+        -g | --gamma )          shift
+                                gvalue="$1"
+                                ;;
+	-b | --bright)		shift
+				bvalue="$1"
+				;;
+	 -r| --reset )          notify-send "Reseting Brightness and Gamma"
+				curBrightness=100
+				curGamma=100
+				shift
+				;;
+    esac
+    shift
+done
+
+# Choosing output for adjustment
+output="HDMI-0"
+# Setting brightness and gamma
+brightness=$(echo $cb+$bvalue|bc)
+gamma=$(echo $cg+$gvalue|bc)
+b=$(bc <<< "scale=2; $brightness/100")  # Make 0.0-1.0
+g=$(bc <<< "scale=2; $gamma/100")
+echo "New Brightness: $brightness"
+echo "New Gamma: $gamma"
+xrandr --output "$output" --brightness "$b" --gamma "$g:$g:$g"
+notify-send "Brightness: $brightness | Gamma: $gamma"
+

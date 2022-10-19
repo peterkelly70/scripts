@@ -1,0 +1,9 @@
+#!/bin/bash
+num=0;
+for f in $(ls|grep mp3|sort -R); 
+do 
+	num=$((${num} + 1 ));
+	echo "*******************";
+	echo $num:$f;
+	id3v2 -c "" -A "60s" -T $num $f; 
+done

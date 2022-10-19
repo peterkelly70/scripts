@@ -1,0 +1,6 @@
+sudo umount -l /home/peter/media/audio/
+sudo umount -l /home/peter/media/tv/
+sudo umount -l /home/peter/media/books/
+sudo umount -l /home/peter/media/movies/
+sudo umount -l /home/peter/media/animated/
+

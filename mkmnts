@@ -1,0 +1,13 @@
+sudo mkdir /media/Uridium/
+sudo mkdir /media/Uridium/Audio/
+sudo mkdir /media/Uridium/TV/
+sudo mkdir /media/Uridium/TV_EXTRA/
+sudo mkdir /media/Uridium/TV_EXTRA_1/
+sudo mkdir /media/Uridium/Movies/
+sudo mkdir /media/Uridium/Torrents/
+sudo mkdir /media/Uridium/Animated/
+sudo mkdir /media/Uridium/Books/
+sudo mkdir /media/Uridium/Comics/
+sudo mkdir /media/Uridium/Games/
+sudo mkdir /media/Uridium/Ringtones/
+sudo chmod -R 777 /media/Uridium/

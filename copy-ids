@@ -1,0 +1,14 @@
+# uname ='ccdmz\pkelly'
+pass='ZH^uNQ5M)#4bd3dt'
+uname="pkelly"
+#pass="weDONTsellsea\$shell947"
+# nupass="TheBatman!939!"
+for host in $(cat esa_servers.txt |grep -v '#'|grep -v -e '^$'|cut -f2 -d' ');
+do
+   echo "Copying ssh key to ${f}";
+   echo sshpass -p \'"${pass}"\' ssh-copy-id -f "${uname}@${host}"
+   echo "Checking ssh and sudo to ${host}";
+   ssh "${uname}@${host}" 'echo '"${pass}"'| sudo -S hostname';
+   # echo "Change Password on ${f}"
+   # echo ssh "${uname}@${f}".dmz.curriculum.edu.au 'echo '"${uname}"':'"${nupass}"'|chpasswd'
+done

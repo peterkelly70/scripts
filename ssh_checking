@@ -1,0 +1,11 @@
+#! /bin/bash
+for h in $(cat list.txt); do
+#while read ip host ; do
+    status=$(ssh -o BatchMode=yes -o ConnectTimeout=5 $ip echo ok 2>&1)
+    case $status in
+        ok) echo $ip $host >> good ;;
+        *"Permission denied"*) echo $ip $host $status >> no_auth ;;
+        *) echo $ip $host $status >> other ;;
+    esac
+done 
+# < list.txt

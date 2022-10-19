@@ -1,0 +1,5 @@
+#!/bin/sh
+show="$1"
+showdir="/media/Vandium/TV/"
+newseason "$show" "$showdir" 
+

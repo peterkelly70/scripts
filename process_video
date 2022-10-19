@@ -1,0 +1,13 @@
+#!/bin/bash
+TD="/home/peter/Torrents/Completed"
+cd "$TD"
+cleanfn
+cleanfn
+cleanfn
+getvid
+all2mp4
+rm *.avi
+rm *.mkv
+flexget execute --task sort-tv-series
+#flexget execute --task sort-animated-series
+

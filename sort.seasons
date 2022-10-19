@@ -1,0 +1,9 @@
+#!/bin/bash
+for s in $(seq 1 "$1"); 
+do 
+   echo -e "Processing Season $s"
+   for f in $(ls|egrep "$s"x);
+      do 
+      mv "$f" Season"$s"; 
+   done; 
+done

@@ -1,0 +1,18 @@
+#!/bin/sh
+dir="/media/Strontium/TV/" 
+last=""
+for i in $(ls "$dir$2"|grep Season)
+do
+ last="$i"
+done
+cede="$dir$2$last"
+
+for j in $(ls |grep "$1")
+do 
+mv "$j" "$cede"
+done
+cd "$dir" 
+tvname "$2"
+echo "Processing $cede"
+
+

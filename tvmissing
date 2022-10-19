@@ -1,0 +1,13 @@
+cd /media/Strontium/TV/
+cd "${1}"
+for f in *
+do
+ cd ${f}
+    echo "Processing $1/${f}"
+    tvren --unattended --show-missing --pad=2
+    cd ..
+done
+
+
+
+

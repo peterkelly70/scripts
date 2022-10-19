@@ -1,0 +1,6 @@
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+for f in $(ls|grep mp3); do 
+    echo "Processed: $f";   
+done;     
+IFS=$SAVEIFS

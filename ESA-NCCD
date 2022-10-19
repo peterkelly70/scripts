@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh -p 7611 pkelly@localhost

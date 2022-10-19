@@ -1,0 +1,2 @@
+sshfs -o follow_symlinks Gandalf:/home/peter/ ~/Gandalf/
+#sshfs -o follow_symlinks morganna:/home/peter/media/audio/ ~/media/audio

@@ -1,0 +1,6 @@
+#!/bin/bash	
+for f in $(ls|grep mp4); do
+ fn=${f%.*}
+ ffmpeg -i "$fn.mp4" -s hd720 -c:v libx264 -preset slow -crf 22 -ac 1 -ar 16000 -b:a 80k "$fn"_smaller.mp4
+ mv "$fn"_smaller.mp4 "$fn".mp4
+done

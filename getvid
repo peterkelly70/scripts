@@ -1,0 +1,17 @@
+#!/bin/bash
+tdir=$(pwd)
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+echo "Processing $tdir" 
+for f in $(ls -p|grep '/$')
+do 
+  echo "Unpacking video in $f" 
+  cd "$f"
+  for g in *.{avi,xvid,mkv,mp4};
+  do
+     mv -vf "$g" "${tdir}/video";
+  done
+cd "$tdir"
+# rm -rf "$f"
+done
+IFS=SAVEIFS

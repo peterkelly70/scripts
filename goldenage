@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for f in $(ls|egrep '[0-9]{4}'|grep mp4);  
+do  
+    y=$(echo $f|egrep -o '[0-9]{4}');
+    if (($y < 1970)); 
+    then 
+      echo mv $f  ~/Media/movies/goldenage/
+    fi;  
+done;
+

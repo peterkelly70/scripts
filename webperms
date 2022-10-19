@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+    echo "Not running as root"
+    exit
+fi
+chown -R www-data:www-data "${1}"
+chmod 755 "${1}"
+cd "${1}"
+find . -type d -print0 | xargs -0 chmod 755 
+find . -type f -print0 | xargs -0 chmod 644

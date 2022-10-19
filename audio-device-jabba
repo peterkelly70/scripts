@@ -1,0 +1,7 @@
+#!/bin/bash	
+pactl set-default-sink 'alsa_output.usb-0b0e_Jabra_Link_370_70BF927800B6-00.analog-stereo'
+pactl set-sink-volume 'alsa_output.usb-0b0e_Jabra_Link_370_70BF927800B6-00.analog-stereo' 75%
+pactl set-default-source 'alsa_input.usb-0b0e_Jabra_Link_370_70BF927800B6-00.mono-fallback'
+pactl set-source-volume 'alsa_input.usb-0b0e_Jabra_Link_370_70BF927800B6-00.mono-fallback' 75%
+
+notify-send "Audio set to Jabba"
