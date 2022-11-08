@@ -1,2 +1,0 @@
-#!/bin/bash
-sshpass -p 'ZH^uNQ5M)#4bd3dt' ssh -p 6551 pkelly@localhost 
